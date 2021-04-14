@@ -18,13 +18,16 @@ String[] listFiles(String dir) {
     return null;
   }
 }
-
-
+/////////////////////////////////////////////////////////////////////////
+//                Création du dictionnaire d'emojis                    //
+/////////////////////////////////////////////////////////////////////////
 Map generateEmojiDict(String[] files){
   Map emojiDict = new Hashtable();
+  // on passe au travers l'ensemble des images dans le dossier
   for (int i = 0; i < files.length; i++) {
+    //on supprime l'extension .png pour n'avoir que le nom de l'emoji qui devient un mot clé
     String keyword = files[i].replace(".png", "");
-    // println(keyword);
+    // on place dans le dictionnaire le mot clé ainsi extrait et on charge l'image qui lui est associé
     emojiDict.put(keyword, loadImage(path + files[i]));
   }
   return emojiDict;
